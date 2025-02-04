@@ -64,24 +64,3 @@ function findValue($array, $key) {
     return null;
 }
 
-// Function to print the results (using the previously created printNestedArray function)
-function printNestedArray($array, $prefix = '') {
-    foreach ($array as $key => $value) {
-        if (is_array($value)) {
-            if (is_numeric($key)) {
-                echo $prefix . "Item " . ($key + 1) . ":\n";
-            } else {
-                echo $prefix . $key . ":\n";
-            }
-            printNestedArray($value, $prefix . "    ");
-        } else {
-            if (is_null($value)) {
-                $value = 'null';
-            } elseif (is_bool($value)) {
-                $value = $value ? 'true' : 'false';
-            }
-            echo $prefix . $key . ": " . $value . "\n";
-        }
-    }
-}
-

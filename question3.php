@@ -1,5 +1,17 @@
 <?php
 
+class ShippingRateService {
+    public static function calculateRate(string $state, string $zip, float $subtotal): float {
+        // Mock implementation for testing
+        // Free shipping for orders over $50
+        // Base rate of $5.99 for orders under $50
+        // Additional $2 for NY state
+        $baseRate = $subtotal >= 50 ? 0.00 : 5.99;
+        $stateRate = strtoupper($state) === 'NY' ? 2.00 : 0.00;
+        return $baseRate + $stateRate;
+    }
+}
+
 class Address {
     private string $line1;
     private ?string $line2;

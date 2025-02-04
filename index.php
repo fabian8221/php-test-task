@@ -118,22 +118,33 @@ $guests = [
     ],
 ];
 
-echo "==================== Question 1 Output ====================\n";
+echo "\n" . str_repeat("=", 50) . "\n";
+echo "QUESTION 1 OUTPUT\n";
+echo str_repeat("=", 50) . "\n\n";
+
 include 'question1.php';
 printNestedArray($guests);
 
-echo "\n==================== Question 2 Output ====================\n";
+echo "\n" . str_repeat("=", 50) . "\n";
+echo "QUESTION 2 OUTPUT\n";
+echo str_repeat("=", 50) . "\n\n";
+
 include 'question2.php';
 $sortedByLastName = sortNestedArray($guests, ['last_name']);
 $sortedByLastNameAndAccountId = sortNestedArray($guests, ['last_name', 'account_id']);
 
-echo "Sorted by last_name:\n";
+echo "SORTED BY LAST NAME:\n";
+echo str_repeat("-", 30) . "\n";
 printNestedArray($sortedByLastName);
 
-echo "\nSorted by last_name and account_id:\n";
+echo "\nSORTED BY LAST NAME AND ACCOUNT ID:\n";
+echo str_repeat("-", 30) . "\n";
 printNestedArray($sortedByLastNameAndAccountId);
 
-echo "\n==================== Question 3 Output ====================\n";
+echo "\n" . str_repeat("=", 50) . "\n";
+echo "QUESTION 3 OUTPUT\n";
+echo str_repeat("=", 50) . "\n\n";
+
 include 'question3.php';
 
 // Create test data for Question 3
@@ -159,19 +170,24 @@ $cart->addItem($item2);
 $cart->setShippingAddress($address1);
 
 // Display cart information
-echo "Cart Information:\n";
-echo "Customer: " . $cart->getCustomerName() . "\n";
-echo "Subtotal: $" . number_format($cart->getSubtotal(), 2) . "\n";
-echo "Tax: $" . number_format($cart->getTax(), 2) . "\n";
-echo "Shipping: $" . number_format($cart->getShippingCost(), 2) . "\n";
-echo "Total: $" . number_format($cart->getTotal(), 2) . "\n";
+echo "CART INFORMATION:\n";
+echo str_repeat("-", 30) . "\n";
+echo sprintf("Customer:     %s\n", $cart->getCustomerName());
+echo sprintf("Subtotal:     $%8.2f\n", $cart->getSubtotal());
+echo sprintf("Tax:          $%8.2f\n", $cart->getTax());
+echo sprintf("Shipping:     $%8.2f\n", $cart->getShippingCost());
+echo str_repeat("-", 30) . "\n";
+echo sprintf("Total:        $%8.2f\n", $cart->getTotal());
 
 // Display customer addresses
-echo "\nCustomer Addresses:\n";
+echo "\nCUSTOMER ADDRESSES:\n";
+echo str_repeat("-", 30) . "\n";
 foreach ($cart->getCustomerAddresses() as $index => $address) {
     echo "Address " . ($index + 1) . ":\n";
     echo $address->getFullAddress() . "\n\n";
 }
 
-echo "==================== End of Output ====================\n";
+echo str_repeat("=", 50) . "\n";
+echo "END OF OUTPUT\n";
+echo str_repeat("=", 50) . "\n";
 ?>
