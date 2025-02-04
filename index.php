@@ -118,6 +118,9 @@ $guests = [
     ],
 ];
 
+// Capture output buffering
+ob_start();
+
 echo "\n" . str_repeat("=", 50) . "\n";
 echo "QUESTION 1 OUTPUT\n";
 echo str_repeat("=", 50) . "\n\n";
@@ -172,12 +175,12 @@ $cart->setShippingAddress($address1);
 // Display cart information
 echo "CART INFORMATION:\n";
 echo str_repeat("-", 30) . "\n";
-echo sprintf("Customer:     %s\n", $cart->getCustomerName());
-echo sprintf("Subtotal:     $%8.2f\n", $cart->getSubtotal());
-echo sprintf("Tax:          $%8.2f\n", $cart->getTax());
-echo sprintf("Shipping:     $%8.2f\n", $cart->getShippingCost());
+printf("Customer:     %s\n", $cart->getCustomerName());
+printf("Subtotal:     $%8.2f\n", $cart->getSubtotal());
+printf("Tax:          $%8.2f\n", $cart->getTax());
+printf("Shipping:     $%8.2f\n", $cart->getShippingCost());
 echo str_repeat("-", 30) . "\n";
-echo sprintf("Total:        $%8.2f\n", $cart->getTotal());
+printf("Total:        $%8.2f\n", $cart->getTotal());
 
 // Display customer addresses
 echo "\nCUSTOMER ADDRESSES:\n";
@@ -190,4 +193,12 @@ foreach ($cart->getCustomerAddresses() as $index => $address) {
 echo str_repeat("=", 50) . "\n";
 echo "END OF OUTPUT\n";
 echo str_repeat("=", 50) . "\n";
+
+// Get the output buffer content
+$output = ob_get_clean();
+
+// Display the output in pre tags for proper formatting
+echo '<pre>';
+echo htmlspecialchars($output);
+echo '</pre>';
 ?>
